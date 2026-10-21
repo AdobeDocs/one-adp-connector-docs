@@ -1,5 +1,5 @@
 - pathPrefix:
-    - /dev-docs-template/
+    - /adobe-for-developers/
 
 - pages:
     - [Analytics](index.md)
