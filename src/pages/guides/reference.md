@@ -1,6 +1,6 @@
 ---
 title: Adobe for Developers Connector tool reference
-description: Reference for all tools available through the Adobe for Developers Connector plugin.
+description: Reference for all tools available through the Adobe for Developers plugin.
 ---
 
 # Adobe for Developers Connector tool reference

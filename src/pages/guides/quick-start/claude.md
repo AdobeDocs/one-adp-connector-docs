@@ -1,11 +1,11 @@
 ---
 title: Install the plugin in Claude
-description: Install the Adobe for Developers Connector plugin and its skills in Claude Code or Claude Desktop.
+description: Install the Adobe for Developers plugin and its skills in Claude Code or Claude Desktop.
 ---
 
 # Install in Claude
 
-The Adobe for Developers Connector plugin installs the connector together with its companion skills — guided flows for common Adobe Developer Platform tasks. You need both for the full experience.
+The Adobe for Developers plugin installs the Connector together with its companion skills — guided flows for common Adobe Developer Platform tasks. You need both for the full experience.
 
 ## Claude Code
 

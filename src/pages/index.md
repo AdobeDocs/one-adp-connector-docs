@@ -18,7 +18,9 @@ Work with Adobe Developer Platform from Claude—search docs, manage projects, a
 #### Resources
 
 * [Quick start guide](guides/index.md)
-* [Development resources](guides/reference.md)
+* [Tools](guides/reference.md)
+* [Skills](guides/skills.md)
+* [Changelog](guides/changelog.md)
 * [Github repository](https://github.com/AdobeDocs/one-adp-connector-docs)
 
 ## Overview

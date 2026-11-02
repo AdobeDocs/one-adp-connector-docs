@@ -1,17 +1,17 @@
 ---
 title: Adobe for Developers Connector FAQ
-description: Answers to common questions about the Adobe for Developers Connector plugin and its skills.
+description: Answers to common questions about the Adobe for Developers plugin and its skills.
 ---
 
 # Frequently asked questions
 
-Common questions about using the Adobe for Developers Connector plugin.
+Common questions about using the Adobe for Developers plugin.
 
 ## Getting started
 
 <AccordionItem slots="heading, text"/>
 
-### What is the Adobe for Developers Connector?
+### What is the Adobe for Developers Plugin?
 
 The Adobe for Developers plugin combines tools and task-focused skills for working with Adobe developer products. It can search official Adobe developer documentation, manage Developer Console projects, workspaces, credentials and API subscriptions, and configure Adobe I/O Events. See the [tool reference](../guides/reference.md) and [skills overview](../guides/skills.md).
 
