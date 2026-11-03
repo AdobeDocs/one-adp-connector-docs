@@ -37,7 +37,7 @@ See [Getting started](guides/index.md) to connect the plugin to your client. See
 
 ## Additional Information
 
-This user guide adheres to Adobe's Code of Conduct. Contributions are encouraged and appreciated. See Adobe's [Code of Conduct](https://github.com/AdobeDocs/analytics-mcp/blob/main/CODE_OF_CONDUCT.md) and [Contribution Guidelines](https://github.com/AdobeDocs/analytics-mcp/blob/main/.github/CONTRIBUTING.md) on GitHub for more information.
+This user guide adheres to Adobe's Code of Conduct. Contributions are encouraged and appreciated. See Adobe's [Code of Conduct](https://github.com/AdobeDocs/one-adp-connector-docs/blob/main/CODE_OF_CONDUCT.md) and [Contribution Guidelines](https://github.com/AdobeDocs/one-adp-connector-docs/blob/main/.github/CONTRIBUTING.md) on GitHub for more information.
 
 <InlineAlert variant="warning" slots="text, text"/>
 
