@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Troubleshooting information for the Adobe for Developers Connector.
+description: Troubleshooting information for the Adobe for Developers plugin.
 ---
 
 # Troubleshooting

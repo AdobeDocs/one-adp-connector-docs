@@ -1,5 +1,5 @@
 ---
-title: Adobe for Developers Connector FAQ
+title: Adobe for Developers plugin FAQ
 description: Answers to common questions about the Adobe for Developers plugin and its skills.
 ---
 
@@ -11,7 +11,7 @@ Common questions about using the Adobe for Developers plugin.
 
 <AccordionItem slots="heading, text"/>
 
-### What is the Adobe for Developers Plugin?
+### What is the Adobe for Developers plugin?
 
 The Adobe for Developers plugin combines tools and task-focused skills for working with Adobe developer products. It can search official Adobe developer documentation, manage Developer Console projects, workspaces, credentials and API subscriptions, and configure Adobe I/O Events. See the [tool reference](../guides/reference.md) and [skills overview](../guides/skills.md).
 
@@ -25,13 +25,13 @@ The current installation guide covers Claude Code and Claude Desktop. See the [C
 
 ### Can I use the plugin with an Adobe organization I belong to?
 
-The Connector uses your signed-in Adobe identity. It can show organizations that identity can access, and you can select the organization relevant to your task. What you can view or change depends on your access and permissions in that organization; the plugin does not grant additional access.
+The plugin uses your signed-in Adobe identity. It can show organizations that identity can access, and you can select the organization relevant to your task. What you can view or change depends on your access and permissions in that organization; the plugin does not grant additional access.
 
 <AccordionItem slots="heading, text"/>
 
 ### How do I sign in?
 
-Connect through the supported Claude client and complete the Adobe sign-in prompt. The Connector acts on behalf of your authenticated Adobe account, rather than using a shared user account. If the wrong Adobe account is signed in, switch accounts in Claude and reconnect.
+Connect through the supported Claude client and complete the Adobe sign-in prompt. The plugin acts on behalf of your authenticated Adobe account, rather than using a shared user account. If the wrong Adobe account is signed in, switch accounts in Claude and reconnect.
 
 ## Developer Console
 
@@ -45,19 +45,19 @@ Depending on your access, you can find projects and workspaces, create or update
 
 ### Why is the Adobe Developer Terms prompt shown?
 
-Most Developer Console operations that manage organization resources require the Adobe Developer Terms to be accepted for the selected organization. Review the terms before agreeing. The Connector only accepts them after you explicitly confirm that you agree.
+Most Developer Console operations that manage organization resources require the Adobe Developer Terms to be accepted for the selected organization. Review the terms before agreeing. The plugin only accepts them after you explicitly confirm that you agree.
 
 <AccordionItem slots="heading, text"/>
 
 ### Which credential types can the plugin work with?
 
-The Connector includes tools for OAuth Server-to-Server, User Auth (AdobeId), Analytics, and Admin Enterprise credentials. Which types are supported for an API depends on the API and your organization's access. The API subscription skill checks the available options before proceeding.
+The plugin includes tools for OAuth Server-to-Server, User Auth (AdobeId), Analytics, and Admin Enterprise credentials. Which types are supported for an API depends on the API and your organization's access. The API subscription skill checks the available options before proceeding.
 
 <AccordionItem slots="heading, text"/>
 
 ### Why can’t I see or change a project, API, or credential?
 
-The Connector only returns resources available to your signed-in Adobe account in the selected organization. Confirm the organization and project context, then check with your organization administrator if you need additional access or product permissions.
+The plugin only returns resources available to your signed-in Adobe account in the selected organization. Confirm the organization and project context, then check with your organization administrator if you need additional access or product permissions.
 
 ## Adobe I/O Events
 
@@ -71,7 +71,7 @@ You can discover providers and event types, create and manage event registration
 
 ### Can I test an event or manage event filters?
 
-Yes. The Connector can check for and display supported sample payloads, post a sample event to a registration, and create, validate, update, list, or delete Subscriber Defined Filters. Review the selected registration and payload before sending a test event.
+Yes. The plugin can check for and display supported sample payloads, post a sample event to a registration, and create, validate, update, list, or delete Subscriber Defined Filters. Review the selected registration and payload before sending a test event.
 
 ## Approvals and privacy
 
@@ -83,9 +83,9 @@ Some tools modify or remove projects, credentials, API subscriptions, registrati
 
 <AccordionItem slots="heading, text"/>
 
-### Does the Connector generate answers with an AI model?
+### Does the plugin generate answers with an AI model?
 
-No. The Connector provides tools and retrieves documentation passages; Claude interprets your request and synthesizes the response. For documentation searches, the retrieved passages and source links are returned to Claude so it can answer your question.
+No. The plugin provides tools and retrieves documentation passages; Claude interprets your request and synthesizes the response. For documentation searches, the retrieved passages and source links are returned to Claude so it can answer your question.
 
 <AccordionItem slots="heading, text"/>
 

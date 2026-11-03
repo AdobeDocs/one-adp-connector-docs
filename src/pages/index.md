@@ -1,5 +1,5 @@
 ---
-title: Adobe for Developers Plugin
+title: Adobe for Developers plugin
 description: Work with Adobe Developer Platform from Claude—search docs, manage projects, and configure events.
 ---
 
@@ -7,7 +7,7 @@ description: Work with Adobe Developer Platform from Claude—search docs, manag
 
 ![Hero image](assets/platform-hero.png)
 
-# Adobe for Developers Plugin
+# Adobe for Developers plugin
 
 Work with Adobe Developer Platform from Claude—search docs, manage projects, and configure events.
 

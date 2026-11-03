@@ -1,10 +1,10 @@
 ---
-title: Adobe for Developers Plugin support
+title: Adobe for Developers plugin support
 description: Find support, report documentation issues, and connect with the Adobe developer community.
 hideOnThisPage: true
 ---
 
-# Adobe for Developers Plugin support
+# Adobe for Developers plugin support
 
 Find support for Adobe developer products, report documentation issues, or connect with the Adobe developer community.
 
@@ -38,7 +38,7 @@ Answers to frequently asked questions.
 
 [Contributing](https://github.com/AdobeDocs/one-adp-connector-docs/blob/main/.github/CONTRIBUTING.md)
 
-Learn how to contribute to the Adobe for Developers Connector documentation.
+Learn how to contribute to the Adobe for Developers plugin documentation.
 
 <DiscoverBlock slots="link, text" width="25%"/>
 

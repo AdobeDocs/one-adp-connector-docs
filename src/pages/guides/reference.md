@@ -1,11 +1,11 @@
 ---
-title: Adobe for Developers Connector tool reference
+title: Adobe for Developers plugin tool reference
 description: Reference for all tools available through the Adobe for Developers plugin.
 ---
 
-# Adobe for Developers Connector tool reference
+# Adobe for Developers plugin tool reference
 
-The Adobe for Developers Connector provides tools for searching Adobe developer documentation, managing Developer Console resources, and configuring Adobe I/O Events. The tools shown here are registered by the connector. Results and available actions depend on the signed-in user and the organizations and permissions available to that account.
+The Adobe for Developers plugin provides tools for searching Adobe developer documentation, managing Developer Console resources, and configuring Adobe I/O Events. The tools shown here are available through the plugin. Results and available actions depend on the signed-in user and the organizations and permissions available to that account.
 
 Most Developer Console resource operations require the Adobe Developer Terms to be accepted for the selected organization. Review the terms before accepting. Tools marked as modifying or removing resources request user approval in supported clients; review each change before approving.
 

@@ -5,7 +5,7 @@ description: An overview of the task-focused skills included with the Adobe for 
 
 # Adobe for Developers plugin skills
 
-Skills are task-focused playbooks included with the Adobe for Developers plugin. They help Claude choose and sequence connector tools to complete common workflows. They use the organizations, projects, workspaces, and permissions available to your signed-in account; you can select the organization to use when prompted.
+Skills are task-focused playbooks included with the Adobe for Developers plugin. They help Claude choose and sequence plugin tools to complete common workflows. They use the organizations, projects, workspaces, and permissions available to your signed-in account; you can select the organization to use when prompted.
 
 ## Available skills
 
