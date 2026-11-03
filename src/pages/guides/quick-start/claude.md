@@ -21,12 +21,11 @@ This is the fastest path — one install gives you both the tools and the skills
 1. Install the plugin:
 
    ```shell
-   /plugin install adobe-for-developers-connector@adobe-skills
+   /plugin install adobe-for-developers@adobe-skills
    ```
 
-1. Confirm the install: type `/` in the chat and check that the Adobe for Developers skills appear in the list.
-
-That's it. The plugin's tools and all skills are now active.
+1. Exit Claude Code and start it again in the same project to reload the installed plugin.
+1. Run `/plugin` and open the **Installed** tab. Confirm that `adobe-for-developers` is listed and enabled.
 
 ## Claude Desktop
 
@@ -36,8 +35,8 @@ On Claude Desktop, install the plugin to add its companion skills. Connecting th
 
 1. Open Claude Desktop.
 1. Go to **Settings > Plugins > Add marketplace**.
-1. Add the marketplace: `adobe/skills`. Claude Desktop will warn that marketplace plugins are not verified by Anthropic — this is expected; proceed.
-1. Install the `adobe-for-developers-connector` plugin from the marketplace.
+1. Add the marketplace using the repository URL: `https://github.com/adobe/skills/`. Claude Desktop will warn that marketplace plugins are not verified by Anthropic — this is expected; proceed.
+1. Install the `adobe-for-developers` plugin from the marketplace.
 1. Check the plugin's skills list. All skills should now be available in chat.
 
 After installing the plugin, check its **Connectors** tab. If the **Install** button is available, use it to connect the server and follow the sign-in prompts. If direct installation is unavailable, and your organization's policies allow custom MCP server connections, use the manual setup below. If organization settings prevent you from adding MCP server connections, contact your Claude organization owner or administrator.
