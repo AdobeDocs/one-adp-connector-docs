@@ -1,28 +1,15 @@
 {
-  "total": 13,
+  "total": 10,
   "offset": 0,
-  "limit": 13,
+  "limit": 10,
   "data": [
     {
       "page": "/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/64650336?v=4",
         "https://avatars.githubusercontent.com/u/153588552?v=4"
       ],
-      "lastUpdated": "10/21/2026"
-    },
-    {
-      "page": "/api/",
-      "avatars": [
-        "https://avatars.githubusercontent.com/u/153588552?v=4"
-      ],
-      "lastUpdated": "10/21/2026"
-    },
-    {
-      "page": "/api/1-4",
-      "avatars": [
-        "https://avatars.githubusercontent.com/u/153588552?v=4"
-      ],
-      "lastUpdated": "10/21/2026"
+      "lastUpdated": "11/3/2026"
     },
     {
       "page": "/config",
@@ -30,70 +17,51 @@
         "https://avatars.githubusercontent.com/u/171782058?v=4",
         "https://avatars.githubusercontent.com/u/153588552?v=4"
       ],
-      "lastUpdated": "10/21/2026"
+      "lastUpdated": "11/2/2026"
     },
     {
       "page": "/guides/",
       "avatars": [
         "https://avatars.githubusercontent.com/u/153588552?v=4"
       ],
-      "lastUpdated": "10/21/2026"
+      "lastUpdated": "11/2/2026"
     },
     {
-      "page": "/guides/dummy_metrics_api/",
-      "avatars": [
-        "https://avatars.githubusercontent.com/u/153588552?v=4"
-      ],
-      "lastUpdated": "10/21/2026"
+      "page": "/guides/changelog",
+      "avatars": [],
+      "lastUpdated": "11/2/2026"
     },
     {
-      "page": "/guides/dummy_oauth_client/",
-      "avatars": [
-        "https://avatars.githubusercontent.com/u/153588552?v=4"
-      ],
-      "lastUpdated": "10/21/2026"
+      "page": "/guides/quick-start/claude",
+      "avatars": [],
+      "lastUpdated": "11/2/2026"
     },
     {
-      "page": "/guides/dummy_using_postman/",
-      "avatars": [
-        "https://avatars.githubusercontent.com/u/153588552?v=4"
-      ],
-      "lastUpdated": "10/21/2026"
+      "page": "/guides/reference",
+      "avatars": [],
+      "lastUpdated": "11/2/2026"
     },
     {
-      "page": "/guides/migrating/",
-      "avatars": [
-        "https://avatars.githubusercontent.com/u/153588552?v=4"
-      ],
-      "lastUpdated": "10/21/2026"
+      "page": "/guides/skills",
+      "avatars": [],
+      "lastUpdated": "11/2/2026"
     },
     {
       "page": "/support/",
       "avatars": [
         "https://avatars.githubusercontent.com/u/153588552?v=4"
       ],
-      "lastUpdated": "10/21/2026"
+      "lastUpdated": "11/2/2026"
     },
     {
-      "page": "/support/community/",
-      "avatars": [
-        "https://avatars.githubusercontent.com/u/153588552?v=4"
-      ],
-      "lastUpdated": "10/21/2026"
+      "page": "/support/faq",
+      "avatars": [],
+      "lastUpdated": "11/2/2026"
     },
     {
-      "page": "/support/contribute/",
-      "avatars": [
-        "https://avatars.githubusercontent.com/u/153588552?v=4"
-      ],
-      "lastUpdated": "10/21/2026"
-    },
-    {
-      "page": "/support/FAQ/",
-      "avatars": [
-        "https://avatars.githubusercontent.com/u/153588552?v=4"
-      ],
-      "lastUpdated": "10/21/2026"
+      "page": "/support/troubleshooting",
+      "avatars": [],
+      "lastUpdated": "11/2/2026"
     }
   ],
   ":type": "sheet"
