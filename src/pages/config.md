@@ -6,12 +6,11 @@
   - [Support](support/index.md)
 
 - subPages:
-  - [Quick start guide](guides/index.md)
-    - [Getting started](guides/index.md)
-    - [Connect to Claude](guides/quick-start/claude.md)
+  - [Getting started](guides/index.md)
+    - [Install in Claude](guides/getting-started/claude.md)
+    - [Install in GitHub Copilot](guides/getting-started/copilot.md)
   - [Tool reference](guides/reference.md)
   - [Skills](guides/skills.md)
-  - [Changelog](guides/changelog.md)
   - [Support](support/index.md)
     - [Troubleshooting](support/troubleshooting.md)
     - [FAQ](support/faq.md)

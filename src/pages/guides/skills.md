@@ -5,7 +5,7 @@ description: An overview of the task-focused skills included with the Adobe for 
 
 # Adobe for Developers plugin skills
 
-Skills are task-focused playbooks included with the Adobe for Developers plugin. They help Claude choose and sequence plugin tools to complete common workflows. They use the organizations, projects, workspaces, and permissions available to your signed-in account; you can select the organization to use when prompted.
+Skills are task-focused playbooks included with the Adobe for Developers plugin. They help your agent choose and sequence plugin tools to complete common workflows. They use the organizations, projects, workspaces, and permissions available to your signed-in account; you can select the organization to use when prompted.
 
 ## Available skills
 
@@ -23,7 +23,7 @@ Use it when you need access to an Adobe API or want to manage an API subscriptio
 
 ### Search Adobe developer documentation (`search-adobe-developer-docs`)
 
-Searches official Adobe developer documentation and returns relevant passages with source links for Claude to synthesize into an answer. It is used for questions about Adobe products, APIs, SDKs, and platform concepts, and to ground setup and provisioning guidance in current documentation.
+Searches official Adobe developer documentation and returns relevant passages with source links for your AI agent to synthesize into an answer. It is used for questions about Adobe products, APIs, SDKs, and platform concepts, and to ground setup and provisioning guidance in current documentation.
 
 ### Manage I/O Events registrations (`io-events-registration`)
 

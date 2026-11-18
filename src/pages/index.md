@@ -1,15 +1,15 @@
 ---
 title: Adobe for Developers plugin
-description: Work with Adobe Developer Platform from Claude—search docs, manage projects, and configure events.
+description: Search developer docs and build with Adobe APIs, credentials, and events directly from your AI coding agents.
 ---
 
 <Superhero slots="image, heading, text, buttons" background="rgb(37, 37, 37)"/>
 
-![Hero image](assets/platform-hero.png)
+![Adobe for Developers banner](assets/adobe-for-developers-hero-wide-banner.svg)
 
 # Adobe for Developers plugin
 
-Work with Adobe Developer Platform from Claude—search docs, manage projects, and configure events.
+Search developer docs and build with Adobe APIs, credentials, and events directly from your AI coding agents.
 
 [Get started](guides/index.md)
 
@@ -17,27 +17,26 @@ Work with Adobe Developer Platform from Claude—search docs, manage projects, a
 
 #### Resources
 
-* [Quick start guide](guides/index.md)
+* [Getting started](guides/index.md)
 * [Tools](guides/reference.md)
 * [Skills](guides/skills.md)
-* [Changelog](guides/changelog.md)
 * [Github repository](https://github.com/AdobeDocs/one-adp-connector-docs)
 
 ## Overview
 
-The Adobe for Developers plugin helps you complete common Adobe developer workflows directly from Claude. Once connected, you can search Adobe's developer documentation, manage your Developer Console projects and APIs, and set up Adobe I/O Events — all through natural language, without leaving your conversation.
+The Adobe for Developers plugin helps you complete common Adobe developer workflows directly from your AI coding agents.
 
 Use the plugin to:
 
-* Search the [Adobe developer documentation](https://developer.adobe.com/) conversationally
-* Manage projects and APIs in the [Developer Console](https://developer.adobe.com/console/)
-* Configure Adobe I/O Events for your applications
+* Search [Adobe's developer documentation](https://developer.adobe.com/) and get clear answers with links to the source pages
+* Set up an Adobe API, including its [Developer Console](https://developer.adobe.com/console/) project and credentials
+* Add more APIs to an existing project or credential
+* Subscribe to Adobe I/O Events through webhooks or a journal, with optional filters
+* Send sample events to test your setup and find out why events are not arriving
+* Open the Developer Console to view a credential's client secrets
+* Review the projects, workspaces, and credentials you already have
 
 See [Getting started](guides/index.md) to connect the plugin to your client. See the [tool reference](guides/reference.md) and [skills](guides/skills.md) for a complete list of available tools and their parameters.
-
-## Additional Information
-
-This user guide adheres to Adobe's Code of Conduct. Contributions are encouraged and appreciated. See Adobe's [Code of Conduct](https://github.com/AdobeDocs/one-adp-connector-docs/blob/main/CODE_OF_CONDUCT.md) and [Contribution Guidelines](https://github.com/AdobeDocs/one-adp-connector-docs/blob/main/.github/CONTRIBUTING.md) on GitHub for more information.
 
 <InlineAlert variant="warning" slots="text, text"/>
 

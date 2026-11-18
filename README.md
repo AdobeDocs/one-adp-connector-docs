@@ -1,8 +1,8 @@
 # Adobe for Developers plugin documentation
 
 This repository contains the documentation website for the Adobe for Developers
-plugin, including installation guidance, tool and skill references, release notes,
-and support information. It contains the documentation, not the plugin implementation.
+plugin, including installation guidance, tool and skill references, and support
+information. It contains the documentation, not the plugin implementation.
 
 ## Requirements
 
@@ -31,10 +31,11 @@ Stop the server with `Ctrl+C` in the terminal where it is running.
 Page content is in [src/pages](src/pages):
 
 - [Landing page](src/pages/index.md)
-- [Getting started](src/pages/guides/index.md) and [Claude installation guide](src/pages/guides/quick-start/claude.md)
+- [Getting started](src/pages/guides/index.md)
+  - [Claude installation guide](src/pages/guides/getting-started/claude.md)
+  - [GitHub Copilot installation guide](src/pages/guides/getting-started/copilot.md)
 - [Tool reference](src/pages/guides/reference.md)
 - [Skills](src/pages/guides/skills.md)
-- [Changelog](src/pages/guides/changelog.md)
 - [Support](src/pages/support/index.md) and [FAQ](src/pages/support/faq.md)
 
 Update [src/pages/config.md](src/pages/config.md) when changing navigation.

@@ -11,15 +11,9 @@ Common questions about using the Adobe for Developers plugin.
 
 <AccordionItem slots="heading, text"/>
 
-### What is the Adobe for Developers plugin?
+### Which clients are covered by the installation guides?
 
-The Adobe for Developers plugin combines tools and task-focused skills for working with Adobe developer products. It can search official Adobe developer documentation, manage Developer Console projects, workspaces, credentials and API subscriptions, and configure Adobe I/O Events. See the [tool reference](../guides/reference.md) and [skills overview](../guides/skills.md).
-
-<AccordionItem slots="heading, text"/>
-
-### Which clients are covered by the installation guide?
-
-The current installation guide covers Claude Code and Claude Desktop. See the [Claude installation guide](../guides/quick-start/claude.md) for the steps and any client-specific setup.
+The [Claude installation guide](../guides/getting-started/claude.md) covers Claude Code and Claude Desktop. The [GitHub Copilot installation guide](../guides/getting-started/copilot.md) is a placeholder for CLI and desktop installation instructions, which are coming soon.
 
 <AccordionItem slots="heading, text"/>
 
@@ -31,7 +25,7 @@ The plugin uses your signed-in Adobe identity. It can show organizations that id
 
 ### How do I sign in?
 
-Connect through the supported Claude client and complete the Adobe sign-in prompt. The plugin acts on behalf of your authenticated Adobe account, rather than using a shared user account. If the wrong Adobe account is signed in, switch accounts in Claude and reconnect.
+Connect through the supported MCP client (your AI coding agent) and complete the Adobe sign-in prompt. The plugin acts on behalf of your authenticated Adobe account, rather than using a shared user account.
 
 ## Developer Console
 
@@ -85,13 +79,13 @@ Some tools modify or remove projects, credentials, API subscriptions, registrati
 
 ### Does the plugin generate answers with an AI model?
 
-No. The plugin provides tools and retrieves documentation passages; Claude interprets your request and synthesizes the response. For documentation searches, the retrieved passages and source links are returned to Claude so it can answer your question.
+No. The plugin provides tools and retrieves documentation passages; the agent interprets your request and synthesizes the response. For documentation searches, the retrieved passages and source links are returned to your agent so it can answer your question.
 
 <AccordionItem slots="heading, text"/>
 
 ### Is my data used to train AI models?
 
-That depends on your Claude plan, settings, and agreement with Anthropic, not on this documentation. Review Anthropic's data-use terms for your account. Your organization may also have policies governing the use of AI clients with Adobe data.
+That depends on your plan, settings, and agreement with Anthropic, not on this documentation. Review data-use terms for your account. Your organization may also have policies governing the use of AI clients with Adobe data.
 
 <AccordionItem slots="heading, text"/>
 
