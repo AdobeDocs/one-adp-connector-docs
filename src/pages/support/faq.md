@@ -13,7 +13,7 @@ Common questions about using the Adobe for Developers plugin.
 
 ### Which clients are covered by the installation guides?
 
-The [Claude installation guide](../guides/getting-started/claude.md) covers Claude Code and Claude Desktop. The [GitHub Copilot installation guide](../guides/getting-started/copilot.md) is a placeholder for CLI and desktop installation instructions, which are coming soon.
+The [Claude installation guide](../guides/getting-started/claude.md) covers Claude Code and Claude Desktop. The [GitHub Copilot installation guide](../guides/getting-started/copilot.md) covers GitHub Copilot CLI and the GitHub Copilot app.
 
 <AccordionItem slots="heading, text"/>
 
@@ -71,7 +71,7 @@ Yes. The plugin can check for and display supported sample payloads, post a samp
 
 <AccordionItem slots="heading, text"/>
 
-### Why does Claude ask me to approve an action?
+### Why does an agent ask me to approve an action?
 
 Some tools modify or remove projects, credentials, API subscriptions, registrations, or filters. Compatible clients display an approval prompt for actions marked as destructive or high impact. Review what the action will change before approving it; permanent deletions cannot be undone.
 

@@ -9,7 +9,7 @@ The Adobe for Developers plugin brings common Adobe developer workflows into you
 
 ## Install the plugin
 
-Choose an installation guide for your client to get started. The GitHub Copilot guide is coming soon.
+Choose an installation guide for your desktop app or CLI.
 
 <Product-Card slots="icon, heading, text, buttons" repeat="2" />
 
@@ -25,6 +25,6 @@ Install the plugin in Claude Code or Claude Desktop.
 
 ### GitHub Copilot
 
-Installation instructions for GitHub Copilot are coming soon.
+Install the plugin in GitHub Copilot CLI or the GitHub Copilot app.
 
 * [Installation guide](getting-started/copilot.md)

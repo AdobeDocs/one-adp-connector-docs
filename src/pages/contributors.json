@@ -1,7 +1,7 @@
 {
-  "total": 10,
+  "total": 9,
   "offset": 0,
-  "limit": 10,
+  "limit": 9,
   "data": [
     {
       "page": "/",
@@ -55,11 +55,6 @@
     },
     {
       "page": "/support/faq",
-      "avatars": [],
-      "lastUpdated": "11/2/2026"
-    },
-    {
-      "page": "/support/troubleshooting",
       "avatars": [],
       "lastUpdated": "11/2/2026"
     }

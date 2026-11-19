@@ -12,5 +12,4 @@
   - [Tool reference](guides/reference.md)
   - [Skills](guides/skills.md)
   - [Support](support/index.md)
-    - [Troubleshooting](support/troubleshooting.md)
     - [FAQ](support/faq.md)
