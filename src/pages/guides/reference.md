@@ -15,23 +15,27 @@ Most Developer Console resource operations require the Adobe Developer Terms to 
 
 ### Get Organisations (`get_organisations`)
 
-Get all Adobe organisations the authenticated user has access to.
+Lists the Adobe organizations you can access across all accounts by default. You can limit results to the authenticated account.
 
 **Operation:** Read-only; does not change Adobe resources.
 
 **Parameters:**
 
-This tool does not require any parameters.
+| Name | Required | Type | Description |
+|------|----------|------|-------------|
+| `includeAllAccounts` | No | Boolean | Whether to include organizations across all accounts. Defaults to `true`; set to `false` to return only organizations for the authenticated account. |
 
 **Example prompt:**
 
 * "Which Adobe organizations can I access?"
 
-<AccordionItem slots="heading, text, text, text, table, text, text"/>
+<AccordionItem slots="heading, text, text, text, text, text, text, text"/>
 
 ### Get Adobe User Profile (`get_adobe_user_profile`)
 
-Returns the profile for the authenticated Adobe user.
+Get the adobe user profile
+
+This tool uses user authentication.
 
 **Operation:** Read-only; does not change Adobe resources.
 
@@ -55,19 +59,19 @@ Accept the Adobe Developer Terms of Service for an organisation. Call this after
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
 
 **Example prompt:**
 
-* "I have reviewed and agree to the Adobe Developer Terms for organization [orgId]."
+* "I have reviewed and agree to the Adobe Developer Terms for organization [consumerOrgId]."
 
 ## Documentation search
 
-<AccordionItem slots="heading, text, text, text, table, text, text"/>
+<AccordionItem slots="heading, text, text, text, text, text, text"/>
 
-### List Doc Collections (`list_doc_collections`)
+### List Documentation Collections (`list_doc_collections`)
 
-List all available Adobe documentation collections (products/knowledge bases) that search_adobe_docs can be scoped to. Call this when the user wants to scope their search to a specific Adobe product (e.g. 'search only App Builder docs') or when a broad search_adobe_docs call returns nothing useful and narrowing might help. Returns collection IDs to pass to search_adobe_docs.
+Lists available Adobe developer documentation collections.
 
 **Operation:** Read-only; does not change Adobe resources.
 
@@ -81,9 +85,9 @@ This tool does not require any parameters.
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
-### Search Adobe Docs (`search_adobe_docs`)
+### Search Adobe Developer Docs (`search_adobe_docs`)
 
-Retrieves relevant passages from official Adobe developer documentation, ranked by relevance score — synthesis happens in your LLM, not here. ALWAYS call this tool in two situations: (1) Before answering any question about Adobe developer products, APIs, SDKs, or platform concepts — do not rely on training knowledge alone. (2) Proactively before starting provisioning flows such as creating credentials, subscribing to Adobe APIs, or setting up I/O Events — fetch context first so your guidance is grounded in official Adobe docs. Covers App Builder, Adobe I/O Events, Express Add-ons, Adobe Developer Console, IMS authentication, product profiles, API credentials, Runtime actions, and all other Adobe developer platform topics. Omit collectionId to search across all collections (default); call list_doc_collections first only if you need to scope to one product. Returns up to 10 passages with content, title, source URL, and relevance score — synthesize the answer from these and cite sources. If no results come back, try rephrasing or broadening the query before giving up.
+Searches official Adobe developer documentation and returns up to 10 relevant passages with source links. You can search all collections or focus on a specific product.
 
 **Operation:** Read-only; does not change Adobe resources.
 
@@ -92,7 +96,7 @@ Retrieves relevant passages from official Adobe developer documentation, ranked 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
 | `query` | Yes | String | The question or topic to search Adobe developer documentation for. |
-| `numberOfResults` | No | Integer | Number of document chunks to return (1–10). Defaults to 5. Range: at least 1 and at most 10. |
+| `numberOfResults` | No | Integer | Number of document chunks to return (1–10). Defaults to 5. Minimum: 1. Maximum: 10. |
 | `collectionId` | No | String | Optional collection ID to scope the search. Call list_doc_collections first to get valid IDs. Omit to search all collections. |
 
 **Example prompt:**
@@ -113,18 +117,18 @@ Get projects in an Adobe organisation. Use filterBy 'all' for every project or '
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
-| `filterBy` | No | String (enum) | Filter projects: 'all' returns every project in the org, 'me' returns only projects where you are the creator or last modifier. Defaults to 'all'. Allowed values: `all`, `me`. |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
+| `filterBy` | No | String (enum) | Filter projects: 'all' returns every project in the org, 'me' returns only projects where you are the creator or last modifier. Defaults to 'all'. Allowed values: `"all"`, `"me"`. |
 
 **Example prompt:**
 
-* "List all projects in organization [orgId]."
+* "List all projects in organization [consumerOrgId]."
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
 ### Create Project (`create_project`)
 
-Create a new project in an Adobe organisation. Use projectType 'default' for a standard project or 'appBuilder' for an App Builder project. Additional constraint: For `projectType: appBuilder`, include `templateId`.
+Creates and initializes a project in an Adobe organization. Supports default projects and App Builder template projects; App Builder projects include Production and Stage workspaces with runtime enabled.
 
 **Operation:** Creates a resource or submits a change.
 
@@ -132,17 +136,17 @@ Create a new project in an Adobe organisation. Use projectType 'default' for a s
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
 | `name` | Yes | String | Alphanumeric project name (no spaces). Pattern: `^[a-zA-Z0-9]+$`. |
 | `title` | Yes | String | Human-readable project title. |
 | `description` | No | String | Optional project description. |
-| `projectType` | Yes | String (enum) | Project type: 'default' for a standard project, 'appBuilder' for an App Builder project. Allowed values: `default`, `appBuilder`. |
+| `projectType` | Yes | String (enum) | Project type: 'default' for a standard project, 'appBuilder' for an App Builder project. Allowed values: `"default"`, `"appBuilder"`. |
 | `whoCreated` | No | String | Optional identifier of who created the project. |
-| `templateId` | No | String | Optional template ID. Required when projectType is 'appBuilder'. |
+| `templateId` | No | String | Optional template ID for standard projects. App Builder projects always use jaeger. |
 
 **Example prompt:**
 
-* "Create a project named [name] in organization [orgId]."
+* "Create a project named [name] in organization [consumerOrgId]."
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
@@ -156,7 +160,7 @@ Edit an existing project's name, title, description, or notification settings. E
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
 | `projectId` | Yes | String | The project ID (the 'id' field from get_projects). |
 | `name` | No | String | New project name (alphanumeric only). |
 | `title` | No | String | New human-readable project title. |
@@ -165,7 +169,7 @@ Edit an existing project's name, title, description, or notification settings. E
 
 **Example prompt:**
 
-* "Update project [projectId] in organization [orgId]."
+* "Update project [projectId] in organization [consumerOrgId]."
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
@@ -179,12 +183,12 @@ Delete a project from an organisation. This is permanent and cannot be undone.
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
 | `projectId` | Yes | String | The project ID to delete (the 'id' field from get_projects). |
 
 **Example prompt:**
 
-* "Delete project [projectId] from organization [orgId]."
+* "Delete project [projectId] from organization [consumerOrgId]."
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
@@ -198,7 +202,7 @@ List all workspaces in a project.
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
 | `projectId` | Yes | String | The project ID (the 'id' field from get_projects). |
 
 **Example prompt:**
@@ -217,7 +221,7 @@ Get details of a specific workspace within a project.
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
 | `projectId` | Yes | String | The project ID (the 'id' field from get_projects). |
 | `workspaceId` | Yes | String | The workspace ID. |
 
@@ -237,7 +241,7 @@ Delete a workspace from a project. This is permanent and cannot be undone.
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
 | `projectId` | Yes | String | The project ID (the 'id' field from get_projects). |
 | `workspaceId` | Yes | String | The workspace ID to delete (the 'id' field from list_workspaces). |
 
@@ -257,13 +261,13 @@ List Adobe services available to an organisation. Optionally filter by SDK codes
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
 | `sdkCodes` | No | String | Optional comma-separated list of SDK codes to filter results (e.g. 'AdobeAnalyticsSDK,CampaignSDK'). |
-| `filterBy` | No | String (enum) | Filter services: 'all' returns every service, 'enabled' returns only services already available to the organisation. Defaults to 'all'. Allowed values: `all`, `enabled`. |
+| `filterBy` | No | String (enum) | Filter services: 'all' returns every service, 'enabled' returns only services already available to the organisation. Defaults to 'all'. Allowed values: `"all"`, `"enabled"`. |
 
 **Example prompt:**
 
-* "List the Adobe services available to organization [orgId]."
+* "List the Adobe services available to organization [consumerOrgId]."
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
@@ -277,7 +281,7 @@ Get all credentials for a workspace.
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
 | `projectId` | Yes | String | The project ID (the 'id' field from get_projects). |
 | `workspaceId` | Yes | String | The workspace ID (the 'id' field from list_workspaces or get_workspace). |
 
@@ -287,9 +291,9 @@ Get all credentials for a workspace.
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
-### Get Credential Secrets (`get_credential_secrets`)
+### Get Credential Secrets Link (`get_credential_secrets`)
 
-Get a link to view a credential's client secrets in Adobe Developer Console. Secrets are never returned directly — always display the returned console_url as a clickable link: 🔗 View in Adobe Developer Console: &#123;console_url&#125;
+Returns a link to view a credential's client secrets in Adobe Developer Console. Secret values are not returned by this tool.
 
 **Operation:** Read-only; does not change Adobe resources.
 
@@ -297,10 +301,10 @@ Get a link to view a credential's client secrets in Adobe Developer Console. Sec
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). |
 | `projectId` | Yes | String | The project ID (the 'id' field from get_projects or create_project). |
 | `credentialId` | Yes | String | The credential ID (the 'id' field from get_credentials or any create credential response). |
-| `credentialType` | Yes | String (enum) | The credential type, used to build the Console deep-link. Allowed values: `oauth_server_to_server`, `entp`, `adobeid`, `analytics`, `admin_entp`. |
+| `credentialType` | Yes | String (enum) | The credential type, used to build the Console deep-link. Allowed values: `"oauth_server_to_server"`, `"entp"`, `"adobeid"`, `"analytics"`, `"admin_entp"`. |
 
 **Example prompt:**
 
@@ -308,7 +312,7 @@ Get a link to view a credential's client secrets in Adobe Developer Console. Sec
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
-### List Workspace Apis (`list_workspace_apis`)
+### List Workspace APIs (`list_workspace_apis`)
 
 List all APIs (services) subscribed to each credential in a workspace. Returns a grouped view: for each credential, shows which Adobe APIs are currently enabled.
 
@@ -318,7 +322,7 @@ List all APIs (services) subscribed to each credential in a workspace. Returns a
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
 | `projectId` | Yes | String | The project ID (the 'id' field from get_projects). |
 | `workspaceId` | Yes | String | The workspace ID (the 'id' field from list_workspaces or get_workspace). |
 
@@ -328,7 +332,7 @@ List all APIs (services) subscribed to each credential in a workspace. Returns a
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
-### Get Credential Services (`get_credential_services`)
+### Get all Adobe services (APIs) subscribed to a specific credential (`get_credential_services`)
 
 Get all Adobe services (APIs) subscribed to a specific credential. Returns service names, SDK codes, scopes, roles, and license configs. Use this to inspect what APIs a credential currently has access to.
 
@@ -338,7 +342,7 @@ Get all Adobe services (APIs) subscribed to a specific credential. Returns servi
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
 | `credentialId` | Yes | String | The credential ID (the 'id' field from get_credentials or any create credential response). Also called the integration ID. |
 
 **Example prompt:**
@@ -347,7 +351,7 @@ Get all Adobe services (APIs) subscribed to a specific credential. Returns servi
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
-### Create OAuth S2S Credential (`create_oauth_s2s_credential`)
+### Create OAuth Server-to-Server Credential (`create_oauth_s2s_credential`)
 
 Create an OAuth Server-to-Server credential in a specific workspace. Optionally subscribe services to it in the same call.
 
@@ -357,7 +361,7 @@ Create an OAuth Server-to-Server credential in a specific workspace. Optionally 
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). |
 | `projectId` | Yes | String | The project ID (the 'id' field from get_projects). |
 | `workspaceId` | Yes | String | The workspace ID (the 'id' field from list_workspaces). |
 | `name` | Yes | String | Name for the credential. |
@@ -372,7 +376,7 @@ Create an OAuth Server-to-Server credential in a specific workspace. Optionally 
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
-### Create User Auth Credential (`create_user_auth_credential`)
+### Create User Authentication Credential (`create_user_auth_credential`)
 
 Create an AdobeId (user OAuth) credential for a workspace. Use this for web apps, SPAs, native apps, or API key access. Additional constraint: For `WebApp`, `SinglePageApp`, or `Web`, provide `defaultRedirectUri` and a non-empty `redirectUriList`. For iOS or Android, provide `urlScheme`.
 
@@ -382,15 +386,15 @@ Create an AdobeId (user OAuth) credential for a workspace. Use this for web apps
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). |
 | `projectId` | Yes | String | The project ID (the 'id' field from get_projects). |
 | `workspaceId` | Yes | String | The workspace ID (the 'id' field from list_workspaces). |
 | `name` | Yes | String | Name for the credential. |
 | `description` | Yes | String | Description for the credential. |
-| `platform` | Yes | String (enum) | Platform type: 'WebApp'/'Web' for web apps (needs redirect URI), 'SinglePageApp' for SPAs (needs redirect URI), 'NativeApp' for desktop/mobile apps, 'apiKey' for API key access (needs domain), 'iOS'/'Android' for mobile apps (needs urlScheme). Allowed values: `WebApp`, `SinglePageApp`, `NativeApp`, `apiKey`, `Web`, `iOS`, `Android`. |
+| `platform` | Yes | String (enum) | Platform type: 'WebApp'/'Web' for web apps (needs redirect URI), 'SinglePageApp' for SPAs (needs redirect URI), 'NativeApp' for desktop/mobile apps, 'apiKey' for API key access (needs domain), 'iOS'/'Android' for mobile apps (needs urlScheme). Allowed values: `"WebApp"`, `"SinglePageApp"`, `"NativeApp"`, `"apiKey"`, `"Web"`, `"iOS"`, `"Android"`. |
 | `defaultRedirectUri` | No | String | Required for WebApp, Web, and SinglePageApp platforms. Provide a plain URL (e.g. 'https://example.com/callback') — do not escape dots. |
 | `urlScheme` | No | String | Required for iOS and Android platforms. The app URL scheme (e.g. 'myapp://callback'). |
-| `redirectUriList` | No | Array of strings | Required for WebApp, Web, and SinglePageApp platforms. List of allowed redirect URI patterns. Pass plain URLs — the server escapes dots automatically. |
+| `redirectUriList` | No | Array of string | Required for WebApp, Web, and SinglePageApp platforms. List of allowed redirect URI patterns. Pass plain URLs — the server escapes dots automatically. |
 | `domain` | No | String | Required for apiKey platform — restricts which domains can use the key (e.g. 'www.example.com'). |
 | `templateId` | No | String | Optional template ID. |
 | `services` | No | Array of objects | Optional list of adobeid services to subscribe immediately. Item fields: `sdkCode` (String; required): The SDK code of the service to subscribe (e.g. 'CCEmbedCompanionAPI').; `roles` (Array of objects; optional) Item fields: `id` (Number; required); `code` (String; required); `name` (String; required).. |
@@ -411,15 +415,15 @@ Create an Analytics credential for a workspace. Supports Web, Android, and iOS p
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). |
 | `projectId` | Yes | String | The project ID (the 'id' field from get_projects). |
 | `workspaceId` | Yes | String | The workspace ID (the 'id' field from list_workspaces). |
 | `name` | Yes | String | Name for the credential. |
 | `description` | Yes | String | Description for the credential. |
-| `platform` | Yes | String (enum) | Platform type: 'Web' for web apps (requires defaultRedirectUri), 'iOS' and 'Android' for mobile apps (requires urlScheme instead). Allowed values: `Web`, `Android`, `iOS`. |
+| `platform` | Yes | String (enum) | Platform type: 'Web' for web apps (requires defaultRedirectUri), 'iOS' and 'Android' for mobile apps (requires urlScheme instead). Allowed values: `"Web"`, `"Android"`, `"iOS"`. |
 | `defaultRedirectUri` | No | String | Required for Web platform. Provide a plain URL (e.g. 'https://example.com/callback') — do not escape dots. |
 | `urlScheme` | No | String | Required for iOS and Android platforms. The app URL scheme (e.g. 'myapp://callback'). |
-| `redirectUriList` | No | Array of strings | Required for Web platform. List of allowed redirect URI patterns. Pass plain URLs — the server escapes dots automatically. |
+| `redirectUriList` | No | Array of string | Required for Web platform. List of allowed redirect URI patterns. Pass plain URLs — the server escapes dots automatically. |
 | `domain` | No | String | Domain restriction for the credential. |
 
 **Example prompt:**
@@ -438,7 +442,7 @@ Create an Admin Enterprise (admin_entp) credential in a specific workspace.
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). |
 | `projectId` | Yes | String | The project ID (the 'id' field from get_projects). |
 | `workspaceId` | Yes | String | The workspace ID (the 'id' field from list_workspaces). |
 | `name` | Yes | String | Name for the admin enterprise credential. |
@@ -463,7 +467,7 @@ Update an existing Admin Enterprise credential's name, description, and redirect
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). |
 | `credentialId` | Yes | String | The admin enterprise credential ID (the 'id' field from get_credentials). |
 | `name` | Yes | String | Name for the credential. |
 | `description` | Yes | String | Description for the credential. |
@@ -477,7 +481,7 @@ Update an existing Admin Enterprise credential's name, description, and redirect
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
-### Subscribe Credential To Services (`subscribe_credential_to_services`)
+### Subscribe Credential to Services (`subscribe_credential_to_services`)
 
 Subscribe a credential to one or more Adobe services. Works for all credential types (adobeid, analytics, entp, oauth_server_to_server). Each service needs at minimum an sdkCode. Already-subscribed services are automatically preserved — only pass the services you want to add or change. Preservation is per-service, not per-licenseConfig: passing a service with an sdkCode that's already subscribed replaces that service's entire licenseConfigs list, so include all of its intended licenseConfigs (existing plus new), not just the new one. Changes are saved with no automatic undo; review them before approving.
 
@@ -487,10 +491,10 @@ Subscribe a credential to one or more Adobe services. Works for all credential t
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). |
 | `projectId` | Yes | String | The project ID (the 'id' field from get_projects). |
 | `workspaceId` | Yes | String | The workspace ID (the 'id' field from list_workspaces). |
-| `credentialType` | Yes | String (enum) | Type of credential to subscribe services to. Allowed values: `adobeid`, `analytics`, `entp`, `oauth_server_to_server`. |
+| `credentialType` | Yes | String (enum) | Type of credential to subscribe services to. Allowed values: `"adobeid"`, `"analytics"`, `"entp"`, `"oauth_server_to_server"`. |
 | `credentialId` | Yes | String | The credential ID (the 'id' field from get_credentials). |
 | `services` | Yes | Array of objects | List of services to add or update. Each item needs at minimum an sdkCode. Already-subscribed services not listed here are kept as-is — you don't need to re-pass the full existing list. Item fields: `sdkCode` (String; required): The SDK code of the service to subscribe (e.g. 'AdobeAnalyticsSDK').; `atlasPlanCode` (String; optional); `licenseConfigs` (Array of objects; optional): License configs from list_services response. Item fields: `productId` (String; required); `id` (String; required); `op` (String; required).; `roles` (Array of objects; optional) Item fields: `id` (Number; required); `code` (String; required); `name` (String; required).. |
 
@@ -500,7 +504,7 @@ Subscribe a credential to one or more Adobe services. Works for all credential t
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
-### Unsubscribe Credential From Service (`unsubscribe_credential_from_service`)
+### Unsubscribe Credential from Service (`unsubscribe_credential_from_service`)
 
 Remove one or more Adobe services from a credential's subscriptions. All other subscribed services are preserved. Changes are saved with no automatic undo; review them before approving.
 
@@ -510,12 +514,12 @@ Remove one or more Adobe services from a credential's subscriptions. All other s
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
 | `projectId` | Yes | String | The project ID (the 'id' field from get_projects). |
 | `workspaceId` | Yes | String | The workspace ID (the 'id' field from list_workspaces). |
-| `credentialType` | Yes | String (enum) | Type of the credential. Allowed values: `adobeid`, `analytics`, `entp`, `oauth_server_to_server`. |
+| `credentialType` | Yes | String (enum) | Type of the credential. Allowed values: `"adobeid"`, `"analytics"`, `"entp"`, `"oauth_server_to_server"`. |
 | `credentialId` | Yes | String | The credential ID (the 'id' field from get_credentials). |
-| `sdkCodes` | Yes | Array of strings | One or more SDK codes to remove (e.g. ['AdobeAnalyticsSDK']). All other existing subscriptions are preserved. Items: at least 1. |
+| `sdkCodes` | Yes | Array of string | One or more SDK codes to remove (e.g. ['AdobeAnalyticsSDK']). All other existing subscriptions are preserved. Minimum items: 1. |
 
 **Example prompt:**
 
@@ -523,7 +527,7 @@ Remove one or more Adobe services from a credential's subscriptions. All other s
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
-### Subscribe Admin Enterprise Credential To Services (`subscribe_admin_enterprise_credential_to_services`)
+### Subscribe Admin Enterprise Credential to Services (`subscribe_admin_enterprise_credential_to_services`)
 
 Add or update API subscriptions for an Admin Enterprise credential. Existing services not included in the request are preserved. For an existing API, include all intended license configs and roles. Changes are saved with no automatic undo; review them before approving.
 
@@ -533,9 +537,9 @@ Add or update API subscriptions for an Admin Enterprise credential. Existing ser
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). Length: at least 1 characters. |
-| `credentialId` | Yes | String | The Admin Enterprise credential ID (id_integration from get_credentials). Length: at least 1 characters. |
-| `services` | Yes | Array of objects | Services to add or update. Existing services not listed here are preserved. For an existing SDK code, include all intended license configs and roles. Items: at least 1. Item fields: `sdkCode` (String; required) Length: at least 1 characters.; `atlasPlanCode` (String; optional); `licenseConfigs` (Array of objects; optional): License configs from list_services response. Item fields: `productId` (String; required); `id` (String; required); `op` (String; required).; `roles` (Array of objects; optional) Item fields: `id` (Number; required); `code` (String; required); `name` (String; required).. |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). Minimum length: 1. |
+| `credentialId` | Yes | String | The Admin Enterprise credential ID (id_integration from get_credentials). Minimum length: 1. |
+| `services` | Yes | Array of object | Services to add or update. Existing services not listed here are preserved. For an existing SDK code, include all intended license configs and roles. Minimum items: 1. Item fields: `sdkCode` (String; required) Length: at least 1 characters.; `atlasPlanCode` (String; optional); `licenseConfigs` (Array of objects; optional): License configs from list_services response. Item fields: `productId` (String; required); `id` (String; required); `op` (String; required).; `roles` (Array of objects; optional) Item fields: `id` (Number; required); `code` (String; required); `name` (String; required).. |
 
 **Example prompt:**
 
@@ -543,7 +547,7 @@ Add or update API subscriptions for an Admin Enterprise credential. Existing ser
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
-### Unsubscribe Admin Enterprise Credential From Service (`unsubscribe_admin_enterprise_credential_from_service`)
+### Unsubscribe Admin Enterprise Credential from Service (`unsubscribe_admin_enterprise_credential_from_service`)
 
 Remove one API subscription from an Admin Enterprise credential. All other API subscriptions are preserved. Requires user approval. Changes are saved with no automatic undo; review them before approving.
 
@@ -553,8 +557,8 @@ Remove one API subscription from an Admin Enterprise credential. All other API s
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). Length: at least 1 characters. |
-| `credentialId` | Yes | String | The Admin Enterprise credential ID (id_integration from get_credentials). Length: at least 1 characters. |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). Minimum length: 1. |
+| `credentialId` | Yes | String | The Admin Enterprise credential ID (id_integration from get_credentials). Minimum length: 1. |
 | `service` | Yes | Object | The single subscribed service to remove. Use its SDK code and any required subscription settings from the credential's current services. Fields: `sdkCode` (String; required) Length: at least 1 characters.; `atlasPlanCode` (String; optional); `licenseConfigs` (Array of objects; optional): License configs from list_services response. Item fields: `productId` (String; required); `id` (String; required); `op` (String; required).; `roles` (Array of objects; optional) Item fields: `id` (Number; required); `code` (String; required); `name` (String; required).. |
 
 **Example prompt:**
@@ -573,7 +577,7 @@ Delete a credential from a workspace. Fails if the credential is still subscribe
 
 | Name | Required | Type | Description |
 |------|----------|------|-------------|
-| `orgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations, e.g. '12345'). |
 | `projectId` | Yes | String | The project ID (the 'id' field from get_projects). |
 | `workspaceId` | Yes | String | The workspace ID (the 'id' field from list_workspaces). |
 | `credentialId` | Yes | String | The credential ID to delete (the 'id' field from get_credentials). |
@@ -581,6 +585,43 @@ Delete a credential from a workspace. Fails if the credential is still subscribe
 **Example prompt:**
 
 * "Delete credential [credentialId] from workspace [workspaceId]."
+
+<AccordionItem slots="heading, text, text, text, table, text, text"/>
+
+### Get Project By ID (`get_project_by_id`)
+
+Returns a project's name, title, description, type, status, and creation or modification information. Creator and modifier profiles are included when available.
+
+**Operation:** Read-only; does not change Adobe resources.
+
+**Parameters:**
+
+| Name | Required | Type | Description |
+|------|----------|------|-------------|
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). Minimum length: 1. |
+| `projectId` | Yes | String | The project ID ('id' from get_projects or 'projectId' from create_project). Minimum length: 1. |
+
+**Example prompt:**
+
+* "Show details for project [projectId] in organization [consumerOrgId]."
+
+<AccordionItem slots="heading, text, text, text, table, text, text"/>
+
+### Get Next Project Name (`get_next_project_name`)
+
+Returns an available project name and title for the organization, ready to use when creating a project.
+
+**Operation:** Read-only; does not change Adobe resources.
+
+**Parameters:**
+
+| Name | Required | Type | Description |
+|------|----------|------|-------------|
+| `consumerOrgId` | Yes | String | The numeric organisation ID (the 'id' field from get_organisations). Minimum length: 1. |
+
+**Example prompt:**
+
+* "Find the next available project name in organization [consumerOrgId]."
 
 ## Adobe I/O Events
 
@@ -600,7 +641,7 @@ List all Adobe I/O event providers available to an organisation. Optionally filt
 | `imsOrgCode` | Yes | String | The IMS org code (the 'code' field from get_organisations, e.g. 'ABC123@AdobeOrg'). |
 | `providerMetadataId` | No | String | Filter by a single provider metadata ID. |
 | `instanceId` | No | String | Filter by instance ID for multi-instance providers. |
-| `providerMetadataIds` | No | Array of strings | Filter by multiple provider metadata IDs. Cannot be used together with providerMetadataId. |
+| `providerMetadataIds` | No | Array of string | Filter by multiple provider metadata IDs. Cannot be used together with providerMetadataId. |
 | `eventmetadata` | No | Boolean | Whether to include event metadata for each provider. Defaults to false. |
 
 **Example prompt:**
@@ -609,7 +650,7 @@ List all Adobe I/O event providers available to an organisation. Optionally filt
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
-### Get Provider Metadata (`get_provider_metadata`)
+### Get Event Provider Metadata (`get_provider_metadata`)
 
 List all Adobe I/O event provider categories available to the org. Returns provider metadata entries grouped by category — use the 'id' field to filter list_event_providers. Requires the IMS org code (the 'code' field from get_organisations, e.g. 'ABC123@AdobeOrg').
 
@@ -627,7 +668,7 @@ List all Adobe I/O event provider categories available to the org. Returns provi
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
-### List Provider Events (`list_provider_events`)
+### List Event Types/Codes for a provider (`list_provider_events`)
 
 List the event metadata (event types) associated with a given provider. Use the provider ID returned by list_event_providers.
 
@@ -661,15 +702,15 @@ Create an event registration for a workspace. Subscribes to one or more event ty
 | `imsOrgCode` | Yes | String | IMS org code (from get_organisations 'code' field, e.g. ABC123@AdobeOrg). |
 | `projectId` | Yes | String | Project ID (from get_projects). |
 | `workspaceId` | Yes | String | Workspace ID (from list_workspaces). |
-| `client_id` | Yes | String | Client ID from Developer Console credential. Length: at least 3 and at most 128 characters. |
-| `name` | Yes | String | Display name for the event registration. Length: at least 3 and at most 255 characters. |
-| `description` | No | String | Optional description of the registration. Length: at most 5000 characters. |
-| `webhook_url` | No | String | Webhook URL to deliver events to. Required for webhook/webhook_batch delivery types. Format: uri. Length: at most 4000 characters. |
-| `events_of_interest` | Yes | Array of objects | Events to subscribe to. Use provider_id and event_code from list_event_providers / list_provider_events. Items: at least 1. Item fields: `provider_id` (String; optional): Provider ID from list_event_providers. Length: at least 1 and at most 38 characters.; `provider` (String; optional); `event_code` (String; required): Event code from list_provider_events. Length: at least 1 and at most 255 characters.. |
-| `delivery_type` | Yes | String (enum) | How events are delivered. Allowed values: `webhook`, `webhook_batch`, `journal`, `aws_eventbridge`. |
-| `runtime_action` | No | String | Optional Runtime action to invoke on events. Length: at most 255 characters. |
+| `client_id` | Yes | String | Client ID from Developer Console credential. Minimum length: 3. Maximum length: 128. |
+| `name` | Yes | String | Display name for the event registration. Minimum length: 3. Maximum length: 255. |
+| `description` | No | String | Optional description of the registration. Maximum length: 5000. |
+| `webhook_url` | No | String | Webhook URL to deliver events to. Required for webhook/webhook_batch delivery types. Maximum length: 4000. Format: `uri`. |
+| `events_of_interest` | Yes | Array of object | Events to subscribe to. Use provider_id and event_code from list_event_providers / list_provider_events. Minimum items: 1. |
+| `delivery_type` | Yes | String (enum) | How events are delivered. Allowed values: `"webhook"`, `"webhook_batch"`, `"journal"`, `"aws_eventbridge"`. |
+| `runtime_action` | No | String | Optional Runtime action to invoke on events. Maximum length: 255. |
 | `enabled` | No | Boolean | Whether the registration is enabled. Defaults to true. |
-| `destination_metadata` | No | Object | Required for aws_eventbridge delivery type. Fields: `aws_region` (String; optional): AWS region for EventBridge delivery.; `aws_account_id` (String; optional): AWS account ID for EventBridge delivery.. |
+| `destination_metadata` | No | Object | AWS region and account ID for EventBridge delivery. Required for aws_eventbridge delivery type. |
 
 **Example prompt:**
 
@@ -677,7 +718,7 @@ Create an event registration for a workspace. Subscribes to one or more event ty
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
-### Get Registrations For Workspace (`get_registrations_for_workspace`)
+### Get Event Registrations for Workspace (`get_registrations_for_workspace`)
 
 Get all event registrations for a workspace. Shows all active registrations including delivery type, status, and subscribed events.
 
@@ -735,14 +776,14 @@ Update an existing event registration. Use this to change the name, events, deli
 | `projectId` | Yes | String | Project ID (from get_projects). |
 | `workspaceId` | Yes | String | Workspace ID (from list_workspaces). |
 | `registrationId` | Yes | String | Registration ID to update (from get_registrations_for_workspace). |
-| `name` | Yes | String | Updated name for the registration. Length: at least 3 and at most 255 characters. |
-| `description` | No | String | Length: at most 5000 characters. |
-| `webhook_url` | No | String | Format: uri. Length: at most 4000 characters. |
-| `events_of_interest` | Yes | Array of objects | Items: at least 1. Item fields: `provider_id` (String; optional); `provider` (String; optional); `event_code` (String; required) Length: at least 1 and at most 255 characters.. |
-| `delivery_type` | Yes | String (enum) | Allowed values: `webhook`, `webhook_batch`, `journal`, `aws_eventbridge`. |
-| `runtime_action` | No | String | Length: at most 255 characters. |
-| `enabled` | No | Boolean | Whether the registration is enabled. |
-| `destination_metadata` | No | Object | Fields: `aws_region` (String; optional); `aws_account_id` (String; optional). |
+| `name` | Yes | String | Updated name for the registration. Minimum length: 3. Maximum length: 255. |
+| `description` | No | String | No description is declared in the source schema. Maximum length: 5000. |
+| `webhook_url` | No | String | No description is declared in the source schema. Maximum length: 4000. Format: `uri`. |
+| `events_of_interest` | Yes | Array of object | Events to subscribe to, using provider IDs and event codes. Minimum items: 1. |
+| `delivery_type` | Yes | String (enum) | No description is declared in the source schema. Allowed values: `"webhook"`, `"webhook_batch"`, `"journal"`, `"aws_eventbridge"`. |
+| `runtime_action` | No | String | No description is declared in the source schema. Maximum length: 255. |
+| `enabled` | No | Boolean | No description is declared in the source schema. |
+| `destination_metadata` | No | Object | AWS region and account ID for EventBridge delivery. |
 
 **Example prompt:**
 
@@ -764,7 +805,7 @@ Partially update a specific field of an event registration using JSON Patch (RFC
 | `projectId` | Yes | String | Project ID. |
 | `workspaceId` | Yes | String | Workspace ID. |
 | `registrationId` | Yes | String | Registration ID to patch. |
-| `operations` | Yes | Array of objects | JSON Patch operations (RFC 6902). Examples: [&#123;op:'replace',path:'/enabled',value:false&#125;] Items: at least 1. Item fields: `op` (String (enum); required): JSON Patch operation. Allowed values: `add`, `remove`, `replace`, `move`, `copy`, `test`.; `path` (String; required): JSON pointer path e.g. '/enabled', '/name', '/webhook_url'.; `value` (Value; optional): New value (required for add/replace operations).. |
+| `operations` | Yes | Array of object | JSON Patch operations (RFC 6902). Examples: [&#123;op:'replace',path:'/enabled',value:false&#125;] Minimum items: 1. |
 
 **Example prompt:**
 
@@ -794,7 +835,7 @@ Delete an event registration permanently. This is permanent and cannot be undone
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
-### Get Tracing For Registration (`get_tracing_for_registration`)
+### Get Event Delivery Trace (`get_tracing_for_registration`)
 
 Get event delivery trace details for a specific registration. Shows when events were delivered, their status, and trace metadata. Useful for debugging event delivery issues.
 
@@ -872,11 +913,11 @@ Post a sample event to a specific registration for testing and debugging. Return
 
 * "Send a sample event [eventCode] to registration [registrationId]."
 
-<AccordionItem slots="heading, text, text, text, table, text, text"/>
+<AccordionItem slots="heading, text, text, text, text, text, text"/>
 
 ### Get Subscriber Filter Patterns (`get_subscriber_filter_patterns`)
 
-List all supported Subscriber Defined Filter patterns with real examples in AWS Event Ruler JSON syntax. Use this to show users what filter patterns are available before they create a filter.
+Lists supported Subscriber Defined Filter matching patterns with examples in AWS Event Ruler JSON syntax.
 
 **Operation:** Read-only; does not change Adobe resources.
 
@@ -947,8 +988,8 @@ Create a Subscriber Defined Filter for a given event registration. The filter ex
 | `projectId` | Yes | String | Project ID (from get_projects). |
 | `workspaceId` | Yes | String | Workspace ID (from list_workspaces). |
 | `registrationId` | Yes | String | Registration ID (from get_registrations_for_workspace). |
-| `name` | Yes | String | Name of the Subscriber Defined Filter (3–80 characters). Length: at least 3 and at most 80 characters. |
-| `description` | No | String | Optional description (up to 250 characters). Length: at most 250 characters. |
+| `name` | Yes | String | Name of the Subscriber Defined Filter (3–80 characters). Minimum length: 3. Maximum length: 80. |
+| `description` | No | String | Optional description (up to 250 characters). Maximum length: 250. |
 | `subscriber_filter` | Yes | String | Filter expression in event-ruler JSON syntax used to match events. |
 
 **Example prompt:**
@@ -971,9 +1012,9 @@ Update an existing Subscriber Defined Filter for a given event registration. Rep
 | `projectId` | Yes | String | Project ID (from get_projects). |
 | `workspaceId` | Yes | String | Workspace ID (from list_workspaces). |
 | `registrationId` | Yes | String | Registration ID (from get_registrations_for_workspace). |
-| `subscriberFilterId` | Yes | String | The UUID of the Subscriber Defined Filter to update (from get_subscriber_filters 'id' field). Format: valid UUID. |
-| `name` | Yes | String | Updated name of the Subscriber Defined Filter (3–80 characters). Length: at least 3 and at most 80 characters. |
-| `description` | No | String | Updated description (up to 250 characters). Length: at most 250 characters. |
+| `subscriberFilterId` | Yes | String | The UUID of the Subscriber Defined Filter to update (from get_subscriber_filters 'id' field). Format: `uuid`. |
+| `name` | Yes | String | Updated name of the Subscriber Defined Filter (3–80 characters). Minimum length: 3. Maximum length: 80. |
+| `description` | No | String | Updated description (up to 250 characters). Maximum length: 250. |
 | `subscriber_filter` | Yes | String | Updated filter expression in event-ruler JSON syntax. |
 
 **Example prompt:**
@@ -1044,7 +1085,7 @@ Fetch a batch of events from the journal for a registration. Unlike get_journal_
 | `since` | No | String | Journal cursor to fetch events after. Use '_page.last' from a previous response. Cannot be combined with 'seek'. |
 | `seek` | No | String | ISO 8601 duration to seek to a point in time (e.g. '-PT2H' for 2 hours ago, '-P1D' for 1 day ago). Cannot be combined with 'since'. |
 | `latest` | No | Boolean | Jump to the end of the journal to start consuming the most recent events. |
-| `limit` | No | Integer | Maximum number of events to return (1–100). Fewer may be returned if total payload exceeds 1.5 MB. Range: at least 1 and at most 100. |
+| `limit` | No | Integer | Maximum number of events to return (1–100). Fewer may be returned if total payload exceeds 1.5 MB. Minimum: 1. Maximum: 100. |
 | `urlLinks` | No | Boolean | Include URL links in the response payload. |
 
 **Example prompt:**
@@ -1053,7 +1094,7 @@ Fetch a batch of events from the journal for a registration. Unlike get_journal_
 
 <AccordionItem slots="heading, text, text, text, table, text, text"/>
 
-### Validate And Get Journal Events (`validate_and_get_journal_events`)
+### Validate Cursor and Get Journal Events (`validate_and_get_journal_events`)
 
 Validate a cursor position and fetch events from the journal starting from that position. The `since` parameter is required — it must be a cursor from a previous response's `_page.last` field (format: 'camel:…'). Use `get_journal_events_batch` first to get an initial cursor, then use this tool to paginate from a known position.
 
@@ -1068,7 +1109,7 @@ Validate a cursor position and fetch events from the journal starting from that 
 | `credentialId` | Yes | String | Credential ID — use the 'id_integration' field from get_credentials response. |
 | `registrationId` | Yes | String | Registration ID (from get_registrations_for_workspace). |
 | `since` | Yes | String | Journal cursor position to fetch events from. Use the '_page.last' value from a previous get_journal_events response to paginate. Format: 'camel:&#123;uuid&#125;.camel:&#123;uuid&#125;.&#123;event-id&#125;…'. Required — the endpoint does not accept 'HEAD' or an empty value. |
-| `limit` | No | Integer | Maximum number of events to return (1–100). Fewer may be returned if total payload exceeds 1.5 MB. Range: at least 1 and at most 100. |
+| `limit` | No | Integer | Maximum number of events to return (1–100). Fewer may be returned if total payload exceeds 1.5 MB. Minimum: 1. Maximum: 100. |
 | `urlLinks` | No | Boolean | Include URL links in the response payload. Defaults to false. |
 
 **Example prompt:**
