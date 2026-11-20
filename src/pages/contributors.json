@@ -9,54 +9,67 @@
         "https://avatars.githubusercontent.com/u/64650336?v=4",
         "https://avatars.githubusercontent.com/u/153588552?v=4"
       ],
-      "lastUpdated": "11/3/2026"
+      "lastUpdated": "11/20/2026"
     },
     {
       "page": "/config",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/64650336?v=4",
         "https://avatars.githubusercontent.com/u/171782058?v=4",
         "https://avatars.githubusercontent.com/u/153588552?v=4"
       ],
-      "lastUpdated": "11/2/2026"
+      "lastUpdated": "11/20/2026"
     },
     {
       "page": "/guides/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/64650336?v=4",
         "https://avatars.githubusercontent.com/u/153588552?v=4"
       ],
-      "lastUpdated": "11/2/2026"
+      "lastUpdated": "11/20/2026"
     },
     {
       "page": "/guides/getting-started/claude",
-      "avatars": [],
-      "lastUpdated": "11/2/2026"
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/64650336?v=4"
+      ],
+      "lastUpdated": "11/20/2026"
     },
     {
       "page": "/guides/getting-started/copilot",
-      "avatars": [],
-      "lastUpdated": "11/18/2026"
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/64650336?v=4"
+      ],
+      "lastUpdated": "11/20/2026"
     },
     {
       "page": "/guides/reference",
-      "avatars": [],
-      "lastUpdated": "11/2/2026"
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/64650336?v=4"
+      ],
+      "lastUpdated": "11/20/2026"
     },
     {
       "page": "/guides/skills",
-      "avatars": [],
-      "lastUpdated": "11/2/2026"
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/64650336?v=4"
+      ],
+      "lastUpdated": "11/20/2026"
     },
     {
       "page": "/support/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/64650336?v=4",
         "https://avatars.githubusercontent.com/u/153588552?v=4"
       ],
-      "lastUpdated": "11/2/2026"
+      "lastUpdated": "11/20/2026"
     },
     {
       "page": "/support/faq",
-      "avatars": [],
-      "lastUpdated": "11/2/2026"
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/64650336?v=4"
+      ],
+      "lastUpdated": "11/20/2026"
     }
   ],
   ":type": "sheet"
