@@ -5,7 +5,9 @@ description: Install the Adobe for Developers plugin in a supported client to se
 
 # Getting started
 
-The Adobe for Developers plugin brings common Adobe developer workflows into your AI coding agent. Once installed, you can search Adobe's developer documentation, manage your [Developer Console](https://developer.adobe.com/console/) projects and APIs, and set up Adobe I/O Events — all through natural language.
+Search, build, and distribute with Adobe, right from your AI coding agent.
+Once installed, you can search [Adobe's developer documentation](https://developer.adobe.com/), set up APIs, credentials, I/O Events, and start and deploy App Builder apps, all through natural language.
+The capability to distribute your apps on Adobe Exchange is coming soon.
 
 ## Install the plugin
 
