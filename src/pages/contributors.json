@@ -6,10 +6,11 @@
     {
       "page": "/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/6910192?v=4",
         "https://avatars.githubusercontent.com/u/64650336?v=4",
         "https://avatars.githubusercontent.com/u/153588552?v=4"
       ],
-      "lastUpdated": "11/20/2026"
+      "lastUpdated": "11/26/2026"
     },
     {
       "page": "/config",
@@ -23,10 +24,11 @@
     {
       "page": "/guides/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/6910192?v=4",
         "https://avatars.githubusercontent.com/u/64650336?v=4",
         "https://avatars.githubusercontent.com/u/153588552?v=4"
       ],
-      "lastUpdated": "11/20/2026"
+      "lastUpdated": "11/26/2026"
     },
     {
       "page": "/guides/getting-started/claude",
