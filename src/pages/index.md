@@ -1,6 +1,6 @@
 ---
 title: Adobe for Developers plugin
-description: Search developer docs and build with Adobe APIs, credentials, and events directly from your AI coding agents.
+description: Search, build, and distribute right from your AI coding agent.
 ---
 
 <Superhero slots="image, heading, text, buttons" background="rgb(37, 37, 37)"/>
@@ -9,7 +9,7 @@ description: Search developer docs and build with Adobe APIs, credentials, and e
 
 # Adobe for Developers plugin
 
-Search developer docs and build with Adobe APIs, credentials, and events directly from your AI coding agents.
+Search, build, and distribute right from your AI coding agent.
 
 [Get started](guides/index.md)
 
